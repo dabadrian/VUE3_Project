@@ -34,10 +34,10 @@
   "Docentes": [
     {
       "id": 1,
-      "nombre": "Juan",
+      "nombre": "Juand",
       "apellido": "Martínez",
       "ci": "1234567",
-      "email": "juan.martinez@example.com",
+      "email": "juan.martinez@mail.com",
       "escalafon_id": 1,
       "facultad_id": 1
     },
@@ -46,7 +46,7 @@
       "nombre": "María",
       "apellido": "García",
       "ci": "7654321",
-      "email": "maria.garcia@example.com",
+      "email": "maria.garcia@mail.com",
       "escalafon_id": 2,
       "facultad_id": 1
     },
@@ -55,7 +55,7 @@
       "nombre": "Carlos",
       "apellido": "López",
       "ci": "9876543",
-      "email": "carlos.lopez@example.com",
+      "email": "carlos.lopez@mail.com",
       "escalafon_id": 3,
       "facultad_id": 1
     },
@@ -64,7 +64,7 @@
       "nombre": "Ana",
       "apellido": "Rodríguez",
       "ci": "4567890",
-      "email": "ana.rodriguez@example.com",
+      "email": "ana.rodriguez@mail.com",
       "escalafon_id": 1,
       "facultad_id": 1
     },
@@ -73,18 +73,34 @@
       "nombre": "Pedro",
       "apellido": "Fernández",
       "ci": "0123456",
-      "email": "pedro.fernandez@example.com",
+      "email": "pedro.fernandez@mail.com",
       "escalafon_id": 2,
       "facultad_id": 1
     }
   ],
   "Estudiantes": [
     {
+      "id": 1,
+      "nombre": "Luis",
+      "apellido": "Pérez",
+      "ci": "1122334",
+      "email": "luis.perez@mail.com",
+      "fecha_nacimiento": "1999-05-12"
+    },
+    {
+      "id": 2,
+      "nombre": "Laura",
+      "apellido": "Gómez",
+      "ci": "5544332",
+      "email": "laura.gomez@mail.com",
+      "fecha_nacimiento": "2000-09-20"
+    },
+    {
       "id": 3,
-      "nombre": "Manuels",
+      "nombre": "Manuel",
       "apellido": "Díaz",
       "ci": "6677889",
-      "email": "manuel.diaz@example.com",
+      "email": "manuel.diaz@mail.com",
       "fecha_nacimiento": "1998-12-02"
     },
     {
@@ -92,7 +108,7 @@
       "nombre": "Marta",
       "apellido": "Vargas",
       "ci": "9900112",
-      "email": "marta.vargas@example.com",
+      "email": "marta.vargas@mail.com",
       "fecha_nacimiento": "1997-07-15"
     },
     {
@@ -100,7 +116,7 @@
       "nombre": "Javier",
       "apellido": "Hernández",
       "ci": "7766554",
-      "email": "javier.hernandez@example.com",
+      "email": "javier.hernandez@mail.com",
       "fecha_nacimiento": "2001-03-08"
     },
     {
@@ -108,7 +124,7 @@
       "nombre": "Valentina",
       "apellido": "Lara",
       "ci": "3344556",
-      "email": "valentina.lara@example.com",
+      "email": "valentina.lara@mail.com",
       "fecha_nacimiento": "2002-11-27"
     },
     {
@@ -116,7 +132,7 @@
       "nombre": "Gabriel",
       "apellido": "Mendoza",
       "ci": "8877665",
-      "email": "gabriel.mendoza@example.com",
+      "email": "gabriel.mendoza@mail.com",
       "fecha_nacimiento": "1999-08-10"
     },
     {
@@ -124,7 +140,7 @@
       "nombre": "Isabel",
       "apellido": "Jiménez",
       "ci": "1122334",
-      "email": "isabel.jimenez@example.com",
+      "email": "isabel.jimenez@mail.com",
       "fecha_nacimiento": "2000-01-25"
     },
     {
@@ -132,7 +148,7 @@
       "nombre": "Alejandro",
       "apellido": "Rojas",
       "ci": "6677889",
-      "email": "alejandro.rojas@example.com",
+      "email": "alejandro.rojas@mail.com",
       "fecha_nacimiento": "1998-06-17"
     }
   ],
@@ -182,7 +198,7 @@
       "id_estudiante": 1,
       "id_semestre": 1,
       "id_asignatura": 1,
-      "nota": 8.5,
+      "nota": 80.5,
       "fecha_registro": "2022-03-15"
     },
     {
@@ -190,7 +206,7 @@
       "id_estudiante": 2,
       "id_semestre": 1,
       "id_asignatura": 3,
-      "nota": 7.8,
+      "nota": 70.8,
       "fecha_registro": "2022-03-18"
     },
     {
@@ -198,7 +214,7 @@
       "id_estudiante": 3,
       "id_semestre": 2,
       "id_asignatura": 2,
-      "nota": 6.9,
+      "nota": 60.9,
       "fecha_registro": "2022-08-21"
     }
   ]
