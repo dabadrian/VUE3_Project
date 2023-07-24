@@ -1,0 +1,150 @@
+{
+  "states": [
+    {
+      "id": 1,
+      "name": "Cochabamba"
+    },
+    {
+      "id": 2,
+      "name": "La Paz"
+    },
+    {
+      "id": 3,
+      "name": "Tarija"
+    },
+    {
+      "id": 4,
+      "name": "Chuquisaca"
+    },
+    {
+      "id": 5,
+      "name": "Beni"
+    },
+    {
+      "id": 6,
+      "name": "Pando"
+    },
+    {
+      "id": 7,
+      "name": "Santa Cruz"
+    },
+    {
+      "id": 8,
+      "name": "Oruro"
+    },
+    {
+      "id": 9,
+      "name": "Potosi"
+    }
+  ],
+  "cities": [
+    {
+      "id": 1,
+      "name": "cercado",
+      "statesId": 1
+    },
+    {
+      "id": 2,
+      "name": "El Alto",
+      "statesId": 2
+    },
+    {
+      "id": 3,
+      "name": "La Paz Ciudad",
+      "statesId": 2
+    }
+  ],
+  "customers": [
+    {
+      "name": "Roberto Quiroga",
+      "phone": 79898789,
+      "statesId": 2,
+      "citiesId": 3,
+      "id": 1
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Portatiles"
+    },
+    {
+      "id": 2,
+      "name": "Teclados"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Dell inspirion 3501",
+      "price": 3140,
+      "categoriesId": 1
+    },
+    {
+      "id": 3,
+      "name": "Msi katana GF66 i7",
+      "price": 13200,
+      "categoriesId": 1
+    },
+    {
+      "name": "Genius ltx",
+      "price": 22,
+      "categoriesId": 2,
+      "id": 4
+    }
+  ],
+  "orders": [
+    {
+      "date": "2023-07-07",
+      "customersId": 1,
+      "id": 1
+    },
+    {
+      "date": "2023-07-08",
+      "customersId": 1,
+      "id": 2
+    },
+    {
+      "date": "2023-07-14",
+      "customersId": 1,
+      "id": 3
+    },
+    {
+      "date": "2023-07-07",
+      "customersId": 1,
+      "id": 4
+    }
+  ],
+  "details": [
+    {
+      "ordersId": 4,
+      "productsId": 3,
+      "quantity": 2,
+      "id": 1
+    },
+    {
+      "ordersId": 4,
+      "productsId": 3,
+      "quantity": 1,
+      "id": 2
+    },
+    {
+      "ordersId": 4,
+      "productsId": 3,
+      "quantity": 1,
+      "id": 3
+    },
+    {
+      "ordersId": 1,
+      "productsId": 3,
+      "quantity": 5,
+      "id": 5
+    },
+    {
+      "ordersId": 1,
+      "productsId": 3,
+      "quantity": 1,
+      "id": 6
+    }
+  ]
+}
