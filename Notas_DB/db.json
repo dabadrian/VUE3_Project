@@ -1,0 +1,205 @@
+{
+  "Facultad": [
+    {
+      "id_facultad": 1,
+      "nombre": "Facultad de Ingeniería"
+    },
+    {
+      "id_facultad": 2,
+      "nombre": "Facultad de Ciencias Sociales"
+    },
+    {
+      "id_facultad": 3,
+      "nombre": "Facultad de Medicina"
+    },
+    {
+      "id_facultad": 4,
+      "nombre": "Facultad de Ciencias Económicas"
+    }
+  ],
+  "Escalafon": [
+    {
+      "id_escalafon": 1,
+      "nombre": "Titular"
+    },
+    {
+      "id_escalafon": 2,
+      "nombre": "Asociado"
+    },
+    {
+      "id_escalafon": 3,
+      "nombre": "Adjunto"
+    }
+  ],
+  "Docentes": [
+    {
+      "id": 1,
+      "nombre": "Juan",
+      "apellido": "Martínez",
+      "ci": "1234567",
+      "email": "juan.martinez@example.com",
+      "escalafon_id": 1,
+      "facultad_id": 1
+    },
+    {
+      "id": 2,
+      "nombre": "María",
+      "apellido": "García",
+      "ci": "7654321",
+      "email": "maria.garcia@example.com",
+      "escalafon_id": 2,
+      "facultad_id": 1
+    },
+    {
+      "id": 3,
+      "nombre": "Carlos",
+      "apellido": "López",
+      "ci": "9876543",
+      "email": "carlos.lopez@example.com",
+      "escalafon_id": 3,
+      "facultad_id": 1
+    },
+    {
+      "id": 4,
+      "nombre": "Ana",
+      "apellido": "Rodríguez",
+      "ci": "4567890",
+      "email": "ana.rodriguez@example.com",
+      "escalafon_id": 1,
+      "facultad_id": 1
+    },
+    {
+      "id": 5,
+      "nombre": "Pedro",
+      "apellido": "Fernández",
+      "ci": "0123456",
+      "email": "pedro.fernandez@example.com",
+      "escalafon_id": 2,
+      "facultad_id": 1
+    }
+  ],
+  "Estudiantes": [
+    {
+      "id": 3,
+      "nombre": "Manuels",
+      "apellido": "Díaz",
+      "ci": "6677889",
+      "email": "manuel.diaz@example.com",
+      "fecha_nacimiento": "1998-12-02"
+    },
+    {
+      "id": 4,
+      "nombre": "Marta",
+      "apellido": "Vargas",
+      "ci": "9900112",
+      "email": "marta.vargas@example.com",
+      "fecha_nacimiento": "1997-07-15"
+    },
+    {
+      "id": 5,
+      "nombre": "Javier",
+      "apellido": "Hernández",
+      "ci": "7766554",
+      "email": "javier.hernandez@example.com",
+      "fecha_nacimiento": "2001-03-08"
+    },
+    {
+      "id": 6,
+      "nombre": "Valentina",
+      "apellido": "Lara",
+      "ci": "3344556",
+      "email": "valentina.lara@example.com",
+      "fecha_nacimiento": "2002-11-27"
+    },
+    {
+      "id": 7,
+      "nombre": "Gabriel",
+      "apellido": "Mendoza",
+      "ci": "8877665",
+      "email": "gabriel.mendoza@example.com",
+      "fecha_nacimiento": "1999-08-10"
+    },
+    {
+      "id": 8,
+      "nombre": "Isabel",
+      "apellido": "Jiménez",
+      "ci": "1122334",
+      "email": "isabel.jimenez@example.com",
+      "fecha_nacimiento": "2000-01-25"
+    },
+    {
+      "id": 9,
+      "nombre": "Alejandro",
+      "apellido": "Rojas",
+      "ci": "6677889",
+      "email": "alejandro.rojas@example.com",
+      "fecha_nacimiento": "1998-06-17"
+    }
+  ],
+  "Asignatura": [
+    {
+      "id": 1,
+      "nombre": "Matemáticas"
+    },
+    {
+      "id": 2,
+      "nombre": "Física"
+    },
+    {
+      "id": 3,
+      "nombre": "Programación"
+    },
+    {
+      "id": 4,
+      "nombre": "Electrónica"
+    },
+    {
+      "id": 5,
+      "nombre": "Mecánica"
+    }
+  ],
+  "Semestre": [
+    {
+      "id": 1,
+      "descripcion": "1/2022"
+    },
+    {
+      "id": 2,
+      "descripcion": "2/2022"
+    },
+    {
+      "id": 3,
+      "descripcion": "1/2023"
+    },
+    {
+      "id": 4,
+      "descripcion": "2/2023"
+    }
+  ],
+  "Nota": [
+    {
+      "id_docente": 1,
+      "id_estudiante": 1,
+      "id_semestre": 1,
+      "id_asignatura": 1,
+      "nota": 8.5,
+      "fecha_registro": "2022-03-15"
+    },
+    {
+      "id_docente": 2,
+      "id_estudiante": 2,
+      "id_semestre": 1,
+      "id_asignatura": 3,
+      "nota": 7.8,
+      "fecha_registro": "2022-03-18"
+    },
+    {
+      "id_docente": 3,
+      "id_estudiante": 3,
+      "id_semestre": 2,
+      "id_asignatura": 2,
+      "nota": 6.9,
+      "fecha_registro": "2022-08-21"
+    }
+  ]
+}
