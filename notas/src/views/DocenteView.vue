@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Docentes</h2>
-    <crud-component :api-url="apiUrl" entity-name="docentes" />
+    <crud-component :api-url="apiUrl" />
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
   },
   data() {
     return {
-      apiUrl: "http://localhost:4000/Docentes",
+      apiUrl: process.env.VUE_APP_API,
     };
   },
 };

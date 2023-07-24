@@ -1,16 +1,16 @@
 <template>
     <div>
-      <h2>Crear nuevo Docente</h2>
-      <crud-component :api-url="apiUrl"/>
+      <h2>Filtro Alumnos</h2>
+      <Filtro-Alumno :api-url="apiUrl" />
     </div>
   </template>
   
   <script>
-  import CrudComponent from "@/components/SaveDocente.vue";
+  import FiltroAlumno from "@/components/FiltroAlumno.vue";
   
   export default {
     components: {
-      CrudComponent,
+        FiltroAlumno,
     },
     data() {
       return {

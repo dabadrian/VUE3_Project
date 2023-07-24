@@ -29,7 +29,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "Alumnos" */ '../views/DocenteView.vue')
+    component: () => import(/* webpackChunkName: "Docentes" */ '../views/DocenteView.vue')
   }, 
   {
     path: '/Docente',
@@ -37,8 +37,25 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "Alumnos" */ '../views/DocenteSave.vue')
+    component: () => import(/* webpackChunkName: "Docente" */ '../views/DocenteSave.vue')
   },  
+  {
+    path: '/Alumno',
+    name: 'Alumno',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "Alumno" */ '../views/AlumnoFiltro.vue')
+  },    
+  {
+    path: '/Notas',
+    name: 'Notas',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "Notas" */ '../views/NotasView.vue')
+  },    
+
 ]
 
 const router = createRouter({

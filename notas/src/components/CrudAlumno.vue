@@ -66,11 +66,11 @@
 
         <div class="col s12">
           <button class="btn waves-effect waves-light" type="submit">
-            Save
+            Guardar
             <i class="material-icons right">send</i>
           </button>&nbsp;
           <button class="btn waves-effect waves-light red" type="button" @click="cancelForm">
-            Cancel
+            Cancelar
             <i class="material-icons right">cancel</i>
           </button>
         </div>
@@ -92,10 +92,6 @@ import axios from "axios";
 export default {
   props: {
     apiUrl: {
-      type: String,
-      required: true,
-    },
-    entityName: {
       type: String,
       required: true,
     },
@@ -150,7 +146,7 @@ export default {
       this.isAddingOrEditing = true;
     },
     deleteObject(id) {
-      if (confirm("Are you sure you want to delete this object?")) {
+      if (confirm("¿Está seguro de eliminar al alumno seleccionado?")) {
         axios.delete(`${this.apiUrl}/${id}`).then(() => {
           this.fetchObjects();
         });

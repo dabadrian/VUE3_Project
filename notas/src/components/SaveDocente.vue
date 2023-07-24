@@ -23,16 +23,18 @@
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s6">
-            <select id="escalafon" v-model="docente.escalafon" required>
-              <option value="Titular">Titular</option>
-              <option value="Asociado">Asociado</option>
-              <option value="Adjunto">Adjunto</option>
+          <div class="input-field col s6" v-if="escalafon.length > 0" >
+            <select id="escalafon" v-model="docente.escalafon_id" required>
+              <option value="" disabled>Seleccione un Escalafón</option>
+              <option v-for="escalafon in escalafon" :key="escalafon.id_escalafon" :value="escalafon.id_escalafon">
+                {{ escalafon.nombre }}
+              </option>
             </select>
             <label for="escalafon">Escalafon:</label>
           </div>
           <div class="input-field col s6" v-if="facultades.length > 0" >
             <select id="facultad" v-model="docente.facultad_id" required>
+              <option value="" disabled>Seleccione una Facultad</option>
               <option v-for="facultad in facultades" :key="facultad.id_facultad" :value="facultad.id_facultad">
                 {{ facultad.nombre }}
               </option>
@@ -40,7 +42,7 @@
             <label for="facultad">Facultad:</label>
           </div>
         </div>
-        <button type="submit" class="waves-effect waves-light btn">Save</button>
+        <button type="submit" class="waves-effect waves-light btn">Guardar Docente</button>
       </form>
     </div>
   </template>
@@ -49,6 +51,16 @@
   import axios from 'axios';
   
   export default {
+    props: {
+      apiUrl: {
+        type: String,
+        required: true,
+      },
+      entityName: {
+        type: String,
+        required: true,
+      },
+    },    
     data() {
       return {
         docente: {
@@ -56,30 +68,32 @@
           apellido: '',
           ci: '',
           email: '',
-          escalafon: 'Titular',
+          escalafon_id: null,
           facultad_id: null,
         },
         facultades: [],
+        escalafon: [],
       };
     },
     async mounted() {
         await this.getFacultades(); // Wait for facultades to be loaded
+        await this.getEscalafon(); 
         this.initializeSelectElements();
     },
     methods: {
         async getEscalafon() {
         try {
-          const response = await axios.get('http://localhost:4000/Escalafon');
-          this.facultades = response.data;
-          console.log(this.facultades);
+          const response = await axios.get(this.apiUrl+'/Escalafon');
+          this.escalafon = response.data;
+          console.log(this.escalafon);
         } catch (error) {
-          console.error('Error fetching facultades:', error);
+          console.error('Error fetching escalafon:', error);
         }
       },
 
       async getFacultades() {
         try {
-          const response = await axios.get('http://localhost:4000/Facultad');
+          const response = await axios.get(this.apiUrl+'/Facultad');
           this.facultades = response.data;
           console.log(this.facultades);
         } catch (error) {
@@ -88,16 +102,16 @@
       },
       async saveDocente() {
         try {
-          await axios.post('http://localhost:4000/Docentes', this.docente);
+          await axios.post(this.apiUrl+'/Docentes', this.docente);
           M.toast({ html: 'Docente guardado satisfactoriamente!', classes: 'green lighten-1' });
           // Optionally, you can redirect to another page or reset the form after saving.
-          this.$router.push('/list-of-docentes');
+          this.$router.push('/Docentes');
           this.docente = {
              nombre: '',
              apellido: '',
              ci: '',
              email: '',
-             escalafon: 'Titular',
+             escalafon_id: null,
              facultad_id: null,
           };
         } catch (error) {

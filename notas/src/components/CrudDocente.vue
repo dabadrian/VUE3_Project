@@ -28,7 +28,7 @@
             <td>{{ object.apellido }}</td>
             <td>{{ object.ci }}</td>
             <td>{{ object.email }}</td>
-            <td>{{ object.escalafon }}</td>
+            <td>{{ getEscalafonName(object.escalafon_id) }}</td>
             <td>{{ getFacultadName(object.facultad_id) }}</td>
             <td>
               <a :class="{ 'disabled-link': isAddingOrEditing }" @click="editObject(object)"><i class="material-icons">edit</i></a>
@@ -43,30 +43,6 @@
       <div v-if="showForm" class="row">
         <h3 class="col s12">{{ formTitle }}</h3>
         <form class="col s12" @submit.prevent="submitForm">
-
-            <div class="row">
-
-            <div class="input-field col s12" v-if="facultades.length>0">
-            <select v-model="formData.facultad_id" required>
-
-                <option v-for="facultad in facultades" :key="facultad.id_facultad" :value="facultad.id_facultad">
-                     {{ facultad.nombre }}
-            </option>
-            </select>
-            <label>Facultad</label>
-          </div>
-        </div>
-
-        <div class="input-field col s6" :key="1">
-            <select id="escalafon" v-model="formData.escalafon" required>
-              <option value="Titular">Titular</option>
-              <option value="Asociado">Asociado</option>
-              <option value="Adjunto">Adjunto</option>
-            </select>
-            <label for="escalafon">Escalafon:</label>
-          </div>
-
-
           <div class="input-field col s12">
             <input v-model="formData.nombre" type="text" required />
             <label>Nombre</label>
@@ -86,30 +62,37 @@
             <input v-model="formData.email" type="email" required />
             <label>Email</label>
           </div>
+          <div class="input-field col s12" v-if="escalafones.length>0">
+            <select v-model="formData.escalafon_id" required>
+                <option v-for="escalafon in escalafones" :key="escalafon.id_escalafon" :value="escalafon.id_escalafon">
+                {{ escalafon.nombre }}
+              </option>
+            </select>
+            <label>Escalafon:</label>
+          </div>
 
-       
-
-
-  
+          <div class="input-field col s12" v-if="facultades.length>0">
+            <select v-model="formData.facultad_id" required>
+              <option v-for="facultad in facultades" :key="facultad.id_facultad" :value="facultad.id_facultad">
+                {{ facultad.nombre }}
+              </option>
+            </select>
+            <label>Facultad</label>
+          </div>           
           <div class="col s12">
             <button class="btn waves-effect waves-light" type="submit">
-              Save
+              Guardar
               <i class="material-icons right">send</i>
             </button>&nbsp;
             <button class="btn waves-effect waves-light red" type="button" @click="cancelForm">
-              Cancel
+              Cancelar
               <i class="material-icons right">cancel</i>
             </button>
           </div>
         </form>
       </div>
   
-      <!-- Add button -->
-      <div class="fixed-action-btn">
-        <a class="btn-floating btn-large waves-effect waves-light red" @click="showAddForm">
-          <i class="large material-icons">add</i>
-        </a>
-      </div>
+
     </div>
   </template>
   
@@ -139,12 +122,14 @@
           apellido: "",
           ci: "",
           email: "",
-          escalafon: "",
-          facultad_id: "",
+          escalafon_id: null,
+          facultad_id: null,
         },
         isAddingOrEditing: false,
         searchQuery: "", // Search query
         facultades: [],
+        escalafones: [],
+        url:"",
       };
     },
     computed: {
@@ -161,13 +146,14 @@
     async mounted() {
       await this.fetchObjects();
       await this.fetchFacultades();
+      await this.fetchEscalafones();
       M.AutoInit();
       M.FormSelect.init(document.querySelectorAll('select'));
     },
    
     methods: {
       fetchObjects() {
-        axios.get(this.apiUrl).then((response) => {
+        axios.get(this.apiUrl+'/Docentes').then((response) => {
           this.objects = response.data;
         });
       },
@@ -184,8 +170,9 @@
         this.isAddingOrEditing = true;
       },
       deleteObject(id) {
-        if (confirm("Are you sure you want to delete this object?")) {
-          axios.delete(`${this.apiUrl}/${id}`).then(() => {
+        if (confirm("¿Está seguro de eliminar al docente seleccionado?")) {
+          this.url=this.apiUrl+'/Docentes';
+          axios.delete(`${this.url}/${id}`).then(() => {
             this.fetchObjects();
           });
         }
@@ -193,8 +180,9 @@
       submitForm() {
         if (this.formData.id) {
           // Update existing object
+          this.url=this.apiUrl+'/Docentes';
           axios
-            .put(`${this.apiUrl}/${this.formData.id}`, this.formData)
+            .put(`${this.url}/${this.formData.id}`, this.formData)
             .then(() => {
               this.showForm = false;
               this.fetchObjects();
@@ -202,7 +190,7 @@
             });
         } else {
           // Create new object
-          axios.post(this.apiUrl, this.formData).then(() => {
+          axios.post(this.apiUrl+'/Docentes', this.formData).then(() => {
             this.showForm = false;
             this.fetchObjects();
             this.isAddingOrEditing = false;
@@ -215,7 +203,7 @@
         this.formData.apellido = "";
         this.formData.ci = "";
         this.formData.email = "";
-        this.formData.escalafon = "";
+        this.formData.escalafon_id = null;
         this.formData.facultad_id = null;
       },
       cancelForm() {
@@ -230,7 +218,7 @@
       },    
 
       async fetchFacultades() {
-        axios.get('http://localhost:4000/Facultad').then((response) => {
+        await axios.get(this.apiUrl+'/Facultad').then((response) => {
             this.facultades = response.data;
             console.log(this.facultades);
         });
@@ -239,6 +227,16 @@
         const facultad = this.facultades.find((facultad) => facultad.id_facultad === facultadId);
         return facultad ? facultad.nombre : 'Unknown'; // Return 'Unknown' if facultad not found
       },
+      async fetchEscalafones() {
+        await axios.get(this.apiUrl+'/Escalafon').then((response) => {
+            this.escalafones = response.data;
+            console.log(this.escalafones);
+        });
+      },
+      getEscalafonName(escalafonId) {
+        const escalafon = this.escalafones.find((escalafon) => escalafon.id_escalafon === escalafonId);
+        return escalafon ? escalafon.nombre : 'Unknown'; // Return 'Unknown' if facultad not found
+      },      
       initializeSelectElements() {
       // Initialize Materialize select elements after DOM rendering is complete
       // This should be called after facultades data is available

@@ -6,26 +6,40 @@
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><router-link to="/">Home</router-link></li>
-          <li><router-link to="/alumnos">Alumnos</router-link></li>
 
           <li>
         <!-- Parent menu item with a dropdown -->
-        <a class="dropdown-trigger" href="#!" data-target="preventaDropdown">
-          Docentes<i class="material-icons right">arrow_drop_down</i>
-        </a>
+            <a class="dropdown-trigger" href="#!" data-target="alumnoDropdown">
+             Alumnos<i class="material-icons right">arrow_drop_down</i>
+            </a>
         <!-- Submenu (dropdown content) -->
-        <ul id="preventaDropdown" class="dropdown-content">
-          <li><router-link to="/docente">Añadir</router-link></li>
-          <li><router-link to="/docentes">Listar</router-link></li>
-          <!-- Add more submenu items as needed -->
-        </ul>
-      </li>
+            <ul id="alumnoDropdown" class="dropdown-content">
+              <li><router-link to="/alumnos">Listar</router-link></li>
+              <li><router-link to="/alumno">Filtrar</router-link></li>
+            <!-- Add more submenu items as needed -->
+            </ul>
+          </li>
+      
+
+
+          <li>
+        <!-- Parent menu item with a dropdown -->
+            <a class="dropdown-trigger" href="#!" data-target="docenteDropdown">
+             Docentes<i class="material-icons right">arrow_drop_down</i>
+            </a>
+        <!-- Submenu (dropdown content) -->
+            <ul id="docenteDropdown" class="dropdown-content">
+              <li><router-link to="/docentes">Listar</router-link></li>
+              <li><router-link to="/docente">Añadir</router-link></li>              
+            <!-- Add more submenu items as needed -->
+            </ul>
+          </li>
       
       
 
 
-          <li><router-link to="/order">Preventas</router-link></li>
-          <li><router-link to="/about">About</router-link></li>
+          <li><router-link to="/notas">Notas</router-link></li>
+
   
         </ul>
       </div>
@@ -33,10 +47,28 @@
 
     <ul class="sidenav" id="mobile-demo">
       <li><router-link to="/">Home</router-link></li>
-      <li><router-link to="/alumnos">Alumnos</router-link></li>
-      <li><router-link to="/docente">Docentes</router-link></li>
-      <li><router-link to="/order">preventas</router-link></li>
-      <li><router-link to="/about">About</router-link></li>
+
+
+      <li>
+    <a class="subheader">Alumnos</a>
+    <ul>
+      <li><router-link to="/alumnos">Listar</router-link></li>
+      <li><router-link to="/alumno">Filtrar</router-link></li>
+      <!-- Add more submenu items as needed -->
+    </ul>
+  </li>
+
+      <li>
+    <a class="subheader">Docentes</a>
+    <ul>
+      <li><router-link to="/docentes">Listar</router-link></li>
+      <li><router-link to="/docente">Añadir</router-link></li>
+      <!-- Add more submenu items as needed -->
+    </ul>
+  </li>
+
+
+      <li><router-link to="/notas">Notas</router-link></li>
     </ul>    
   <router-view/>
   </div>
@@ -59,11 +91,6 @@ export default {
     }
   },
   methods:{
-    logout(){
-      this.$store.dispatch("doLogout");
-      this.$router.push("/login");
-
-    }
   },
   created() {
     document.addEventListener('DOMContentLoaded', function () {

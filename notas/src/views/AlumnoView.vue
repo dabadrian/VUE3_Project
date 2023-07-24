@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Alumnos</h2>
-    <crud-component :api-url="apiUrl" entity-name="alumnos" />
+    <crud-component :api-url="apiUrl" />
   </div>
 </template>
 
@@ -14,7 +14,8 @@ export default {
   },
   data() {
     return {
-      apiUrl: "http://localhost:4000/Estudiantes",
+      apiUrl: process.env.VUE_APP_API+'/Estudiantes',
+      
     };
   },
 };
